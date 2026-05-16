@@ -11,6 +11,8 @@
   <meta property="og:description" content="Soluções em mecânica, mecatrônica, diagnósticos técnicos e projetos especiais para caminhões e máquinas pesadas." />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="pt_BR" />
+  <meta property="og:image" content="images/logo-header.png" />
+  <link rel="icon" href="images/logo-header.png" type="image/png" />
   <title>IMC Diesel Engenharia de Frotas | Engenharia Diesel e Gestão de Frotas</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,11 +26,13 @@
   --graphite-700: #1c1c21;
   --graphite-600: #2a2a32;
   --graphite-500: #3d3d48;
-  --yellow: #e8b923;
-  --yellow-bright: #f5c84c;
+  --accent: #3d8fd4;
+  --accent-bright: #6eb8e8;
+  --accent-soft: #2a6fa8;
   --blue-deep: #0f2840;
   --blue-metal: #1a4d7a;
   --blue-glow: #3d7eb8;
+  --bg-navy: linear-gradient(145deg, #060608 0%, #0f2840 42%, #050506 100%);
   --text: #e8eaef;
   --text-muted: #9aa3b2;
   --radius: 14px;
@@ -55,7 +59,8 @@ body {
   font-size: 1.05rem;
   line-height: 1.65;
   color: var(--text);
-  background: var(--black);
+  background: var(--bg-navy);
+  background-attachment: fixed;
   overflow-x: hidden;
 }
 
@@ -92,7 +97,7 @@ h3 {
 }
 
 a {
-  color: var(--yellow-bright);
+  color: var(--accent-bright);
   text-decoration: none;
 }
 
@@ -114,16 +119,17 @@ a:hover {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 0.75rem 0;
-  background: linear-gradient(180deg, rgba(5, 5, 6, 0.95), rgba(5, 5, 6, 0.75) 70%, transparent);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  transition: background 0.35s var(--ease-out), border-color 0.35s;
+  padding: 1.45rem 0;
+  background: linear-gradient(180deg, rgba(5, 5, 6, 0.97), rgba(5, 5, 6, 0.82) 70%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background 0.35s var(--ease-out), border-color 0.35s, padding 0.35s var(--ease-out);
 }
 
 .header.is-scrolled {
-  background: rgba(8, 8, 10, 0.92);
-  border-bottom-color: rgba(232, 185, 35, 0.15);
+  padding: 1.05rem 0;
+  background: rgba(8, 8, 10, 0.94);
+  border-bottom-color: rgba(61, 142, 212, 0.18);
 }
 
 .header__inner {
@@ -136,25 +142,38 @@ a:hover {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
   text-decoration: none;
   color: inherit;
+  flex-shrink: 0;
+}
+
+.logo--brand {
+  gap: 0.85rem;
 }
 
 .logo:hover {
   text-decoration: none;
+  opacity: 0.92;
 }
 
 .logo__mark {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: 1.35rem;
-  padding: 0.35rem 0.55rem;
+  font-size: 1.45rem;
+  padding: 0.45rem 0.65rem;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--yellow) 0%, #c9e0f5 45%, var(--blue-metal) 100%);
-  color: var(--black);
+  background: linear-gradient(135deg, #a8d4f5 0%, #5eb0e8 42%, var(--blue-metal) 100%);
+  color: #050506;
   letter-spacing: 0.06em;
-  box-shadow: 0 4px 20px rgba(232, 185, 35, 0.25);
+  line-height: 1;
+  flex-shrink: 0;
+  box-shadow: 0 4px 22px rgba(61, 142, 212, 0.4);
+  transition: font-size 0.35s var(--ease-out), padding 0.35s var(--ease-out), box-shadow 0.35s;
+}
+
+.header.is-scrolled .logo__mark {
+  font-size: 1.25rem;
+  padding: 0.38rem 0.55rem;
 }
 
 .logo__text {
@@ -166,13 +185,13 @@ a:hover {
 .logo__line {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1.18rem;
   letter-spacing: 0.28em;
   color: var(--text);
 }
 
 .logo__sub {
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   color: var(--text-muted);
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -201,7 +220,7 @@ a:hover {
 }
 
 .nav__list a:hover {
-  color: var(--yellow-bright);
+  color: var(--accent-bright);
   text-decoration: none;
 }
 
@@ -278,28 +297,28 @@ a:hover {
 }
 
 .btn--primary {
-  background: linear-gradient(135deg, var(--yellow) 0%, #f0d060 40%, var(--blue-metal) 160%);
-  color: var(--black);
+  background: linear-gradient(135deg, var(--accent-bright) 0%, var(--accent) 45%, var(--blue-metal) 160%);
+  color: #fff;
   border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 8px 32px rgba(232, 185, 35, 0.22), var(--shadow-glow);
+  box-shadow: 0 8px 32px rgba(61, 142, 212, 0.22), var(--shadow-glow);
 }
 
 .btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(232, 185, 35, 0.35), 0 0 50px rgba(61, 126, 184, 0.2);
+  box-shadow: 0 12px 40px rgba(61, 142, 212, 0.35), 0 0 50px rgba(61, 126, 184, 0.2);
 }
 
 .btn--outline {
   background: transparent;
   color: var(--text);
-  border-color: rgba(232, 185, 35, 0.45);
+  border-color: rgba(61, 142, 212, 0.45);
   backdrop-filter: blur(6px);
 }
 
 .btn--outline:hover {
-  border-color: var(--yellow-bright);
-  color: var(--yellow-bright);
-  background: rgba(232, 185, 35, 0.06);
+  border-color: var(--accent-bright);
+  color: var(--accent-bright);
+  background: rgba(61, 142, 212, 0.06);
   transform: translateY(-2px);
 }
 
@@ -314,7 +333,7 @@ a:hover {
   min-height: 100dvh;
   display: flex;
   align-items: center;
-  padding: 7rem 0 5rem;
+  padding: 10rem 0 5rem;
   overflow: hidden;
   /* Fallback visível se imagens externas não carregarem (offline / bloqueio) */
   background: linear-gradient(145deg, #060608 0%, #0f2840 42%, #050506 100%);
@@ -351,7 +370,7 @@ a:hover {
   z-index: 1;
   background:
     linear-gradient(120deg, rgba(5, 5, 6, 0.92) 0%, rgba(15, 40, 64, 0.55) 45%, rgba(5, 5, 6, 0.88) 100%),
-    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(232, 185, 35, 0.12), transparent 55%);
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(61, 142, 212, 0.12), transparent 55%);
   pointer-events: none;
 }
 
@@ -378,7 +397,7 @@ a:hover {
   height: min(40vw, 320px);
   bottom: 15%;
   left: 10%;
-  background: radial-gradient(circle, rgba(232, 185, 35, 0.35), transparent 70%);
+  background: radial-gradient(circle, rgba(61, 142, 212, 0.35), transparent 70%);
   animation-delay: -3s;
 }
 
@@ -423,9 +442,9 @@ a:hover {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--yellow-bright);
-  background: rgba(232, 185, 35, 0.08);
-  border: 1px solid rgba(232, 185, 35, 0.25);
+  color: var(--accent-bright);
+  background: rgba(61, 142, 212, 0.08);
+  border: 1px solid rgba(61, 142, 212, 0.25);
   margin-bottom: 1.35rem;
   animation: fadeUp 0.9s var(--ease-out) both;
 }
@@ -434,7 +453,7 @@ a:hover {
   font-size: clamp(2rem, 5vw, 3.35rem);
   margin: 0 0 1.25rem;
   text-wrap: balance;
-  background: linear-gradient(135deg, #fff 0%, #c5d9ec 55%, var(--yellow-bright) 100%);
+  background: linear-gradient(135deg, #fff 0%, #c5d9ec 55%, var(--accent-bright) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -486,7 +505,7 @@ a:hover {
   translate: -50% 0;
   width: 4px;
   height: 8px;
-  background: var(--yellow);
+  background: var(--accent);
   border-radius: 2px;
   animation: scrollDot 2s ease-in-out infinite;
 }
@@ -511,7 +530,7 @@ a:hover {
 }
 
 .section--sobre {
-  background: linear-gradient(180deg, var(--black), var(--graphite-900));
+  background: transparent;
 }
 
 .section__head {
@@ -538,7 +557,7 @@ a:hover {
   height: 3px;
   margin: 1.25rem auto 0;
   border-radius: 3px;
-  background: linear-gradient(90deg, transparent, var(--yellow), var(--blue-glow), transparent);
+  background: linear-gradient(90deg, transparent, var(--accent), var(--blue-glow), transparent);
 }
 
 .highlight-call {
@@ -548,7 +567,7 @@ a:hover {
 }
 
 .highlight-call strong {
-  color: var(--yellow-bright);
+  color: var(--accent-bright);
   font-weight: 700;
 }
 
@@ -585,7 +604,7 @@ a:hover {
   right: -40%;
   width: 160px;
   height: 160px;
-  background: radial-gradient(circle, rgba(232, 185, 35, 0.2), transparent 70%);
+  background: radial-gradient(circle, rgba(61, 142, 212, 0.2), transparent 70%);
   pointer-events: none;
 }
 
@@ -609,7 +628,7 @@ a:hover {
 }
 
 .credential__crea strong {
-  color: var(--yellow-bright);
+  color: var(--accent-bright);
 }
 
 .credential__ico {
@@ -619,8 +638,8 @@ a:hover {
 
 /* Services */
 .section--servicos {
-  background: var(--graphite-900);
-  border-block: 1px solid rgba(255, 255, 255, 0.04);
+  background: transparent;
+  border-block: 1px solid rgba(61, 142, 212, 0.08);
 }
 
 .services {
@@ -661,17 +680,17 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(130deg, rgba(232, 185, 35, 0.08), transparent 45%, rgba(61, 126, 184, 0.1));
+  background: linear-gradient(130deg, rgba(61, 142, 212, 0.08), transparent 45%, rgba(61, 126, 184, 0.1));
   opacity: 0;
   transition: opacity 0.42s var(--ease-out);
 }
 
 .service-card:hover .service-card__inner {
   transform: translateY(-8px);
-  border-color: rgba(232, 185, 35, 0.28);
+  border-color: rgba(61, 142, 212, 0.28);
   box-shadow:
     0 24px 50px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(232, 185, 35, 0.12),
+    0 0 0 1px rgba(61, 142, 212, 0.12),
     var(--shadow-glow);
 }
 
@@ -704,7 +723,7 @@ a:hover {
 
 /* Diferenciais */
 .section--diferenciais {
-  background: linear-gradient(180deg, var(--graphite-900), var(--black));
+  background: transparent;
   position: relative;
   overflow: hidden;
 }
@@ -749,7 +768,7 @@ a:hover {
 
 .diff-item:hover {
   background: rgba(26, 77, 122, 0.22);
-  border-color: rgba(232, 185, 35, 0.2);
+  border-color: rgba(61, 142, 212, 0.2);
   transform: translateY(-4px);
 }
 
@@ -761,13 +780,13 @@ a:hover {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--yellow), var(--blue-glow));
-  box-shadow: 0 0 16px rgba(232, 185, 35, 0.45);
+  background: linear-gradient(135deg, var(--accent), var(--blue-glow));
+  box-shadow: 0 0 16px rgba(61, 142, 212, 0.45);
 }
 
 /* Atuação */
 .section--atuacao {
-  background: var(--graphite-800);
+  background: transparent;
 }
 
 .atuacao-grid {
@@ -786,7 +805,7 @@ a:hover {
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  min-height: 200px;
+  min-height: 230px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
   transition: transform 0.4s var(--ease-out), box-shadow 0.4s;
@@ -807,7 +826,7 @@ a:hover {
   padding: 0;
   display: block;
   object-fit: cover;
-  object-position: center;
+  object-position: 72% center;
   transition: transform 0.6s var(--ease-out);
 }
 
@@ -819,7 +838,9 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 20%, rgba(5, 5, 6, 0.92) 100%);
+  background:
+    linear-gradient(180deg, rgba(26, 77, 122, 0.45) 0%, transparent 42%),
+    linear-gradient(180deg, transparent 18%, rgba(5, 5, 6, 0.92) 100%);
   pointer-events: none;
 }
 
@@ -838,8 +859,8 @@ a:hover {
 
 /* Contato */
 .section--contato {
-  background: linear-gradient(180deg, var(--black), var(--graphite-900));
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  background: transparent;
+  border-top: 1px solid rgba(61, 142, 212, 0.08);
 }
 
 .contato-grid {
@@ -855,11 +876,28 @@ a:hover {
   color: var(--text);
 }
 
-.contato-info__hours .label {
+.contato-info__hours .label,
+.contato-info__email .label {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--blue-glow);
+}
+
+.contato-info__email {
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem;
+  color: var(--text);
+}
+
+.contato-info__email a {
+  color: var(--accent-bright);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contato-info__email a:hover {
+  text-decoration: underline;
 }
 
 .contato-map {
@@ -916,7 +954,7 @@ a:hover {
 .form-row select:focus,
 .form-row textarea:focus {
   outline: none;
-  border-color: rgba(232, 185, 35, 0.45);
+  border-color: rgba(61, 142, 212, 0.45);
   box-shadow: 0 0 0 3px rgba(61, 126, 184, 0.15);
 }
 
@@ -935,8 +973,8 @@ a:hover {
 /* Footer */
 .footer {
   padding: 3rem 0 4.5rem;
-  background: #030304;
-  border-top: 1px solid rgba(232, 185, 35, 0.12);
+  background: transparent;
+  border-top: 1px solid rgba(61, 142, 212, 0.12);
   position: relative;
   z-index: 1;
 }
@@ -949,13 +987,41 @@ a:hover {
   gap: 1.5rem;
 }
 
+.logo--footer.logo--brand {
+  flex-direction: row;
+  gap: 0.75rem;
+}
+
 .logo--footer .logo__mark {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
+}
+
+.logo--footer .logo__line {
+  font-size: 0.95rem;
 }
 
 .footer__social {
   display: flex;
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer__email {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.footer__email a {
+  color: var(--accent-bright);
+  font-weight: 600;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.footer__email a:hover {
+  text-decoration: underline;
 }
 
 .social-link {
@@ -976,8 +1042,8 @@ a:hover {
 }
 
 .social-link:hover {
-  color: var(--yellow-bright);
-  border-color: rgba(232, 185, 35, 0.35);
+  color: var(--accent-bright);
+  border-color: rgba(61, 142, 212, 0.35);
   transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   text-decoration: none;
@@ -1078,7 +1144,7 @@ a:hover {
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    padding: 5.5rem 1.5rem 2rem;
+    padding: 7.5rem 1.5rem 2rem;
     gap: 1.5rem;
     background: rgba(8, 8, 10, 0.98);
     border-left: 1px solid rgba(255, 255, 255, 0.08);
@@ -1108,6 +1174,32 @@ a:hover {
 }
 
 @media (max-width: 540px) {
+  .header {
+    padding: 1.1rem 0;
+  }
+
+  .header.is-scrolled {
+    padding: 0.95rem 0;
+  }
+
+  .logo__mark {
+    font-size: 1.15rem;
+    padding: 0.38rem 0.52rem;
+  }
+
+  .header.is-scrolled .logo__mark {
+    font-size: 1.05rem;
+  }
+
+  .logo__line {
+    font-size: 0.95rem;
+    letter-spacing: 0.2em;
+  }
+
+  .logo__sub {
+    font-size: 0.68rem;
+  }
+
   .hero__actions {
     flex-direction: column;
     align-items: stretch;
@@ -1179,7 +1271,7 @@ a:hover {
 
   <header class="header" id="topo">
     <div class="header__inner container">
-      <a href="#topo" class="logo" aria-label="IMC Diesel — início">
+      <a href="#topo" class="logo logo--brand" aria-label="IMC Diesel — início">
         <span class="logo__mark">IMC</span>
         <span class="logo__text">
           <span class="logo__line">DIESEL</span>
@@ -1246,7 +1338,7 @@ a:hover {
             <svg class="credential__ico" width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
               <defs>
                 <linearGradient id="credg" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#ffd35a"/><stop offset="50%" stop-color="#7eb8da"/><stop offset="100%" stop-color="#1e4976"/>
+                  <stop offset="0%" stop-color="#6eb8e8"/><stop offset="50%" stop-color="#7eb8da"/><stop offset="100%" stop-color="#1e4976"/>
                 </linearGradient>
               </defs>
               <path stroke="url(#credg)" stroke-width="2" d="M12 38V14l12-8 12 8v24M12 38h24"/><path stroke="url(#credg)" stroke-width="2" d="M22 38V26h12"/>
@@ -1307,19 +1399,19 @@ a:hover {
         </div>
         <div class="atuacao-grid">
           <article class="atuacao-card reveal">
-            <img class="atuacao-card__img" src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Caminhões" width="800" height="520" loading="lazy" decoding="async" />
+            <img class="atuacao-card__img" src="images/atuacao/caminhoes.jpg" alt="Volvo FH 540 azul — vista frontal" width="1280" height="853" loading="lazy" decoding="async" />
             <h3>Caminhões</h3>
           </article>
           <article class="atuacao-card reveal">
-            <img class="atuacao-card__img" src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Caminhão na rodovia" width="800" height="520" loading="lazy" decoding="async" />
+            <img class="atuacao-card__img" src="images/atuacao/caixa-marcha.jpg" alt="Volvo FH 540 azul — caixa de marcha" width="1280" height="853" loading="lazy" decoding="async" />
             <h3>Caixa de marcha</h3>
           </article>
           <article class="atuacao-card reveal">
-            <img class="atuacao-card__img" src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Caminhão na rodovia" width="800" height="520" loading="lazy" decoding="async" />
+            <img class="atuacao-card__img" src="images/atuacao/diagnostico-eletronico.jpg" alt="Volvo FH 540 azul — diagnóstico eletrônico" width="1280" height="853" loading="lazy" decoding="async" />
             <h3>Diagnóstico eletrônico</h3>
           </article>
           <article class="atuacao-card reveal">
-            <img class="atuacao-card__img" src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Caminhão na rodovia" width="800" height="520" loading="lazy" decoding="async" />
+            <img class="atuacao-card__img" src="images/atuacao/motores-diesel.jpg" alt="Volvo FH 540 azul — motor diesel" width="1280" height="853" loading="lazy" decoding="async" />
             <h3>Motores a diesel</h3>
           </article>
         </div>
@@ -1336,6 +1428,7 @@ a:hover {
         <div class="contato-grid">
           <div class="contato-info reveal">
             <p class="contato-info__hours"><span class="label">Horário de atendimento</span><br />08h às 18h</p>
+            <p class="contato-info__email"><span class="label">E-mail</span><br /><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=engizaquelcastro@gmail.com&amp;su=Contato%20-%20IMC%20Diesel" target="_blank" rel="noopener noreferrer">engizaquelcastro@gmail.com</a></p>
             <div class="contato-map">
               <iframe title="Localização — IMC Diesel (ajuste o endereço no embed)" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 src="https://www.openstreetmap.org/export/embed.html?bbox=-49.45%2C-16.80%2C-49.10%2C-16.55&amp;layer=mapnik"
@@ -1387,7 +1480,7 @@ a:hover {
 
   <footer class="footer">
     <div class="container footer__inner">
-      <a href="#topo" class="logo logo--footer" aria-label="IMC Diesel — topo">
+      <a href="#topo" class="logo logo--brand logo--footer" aria-label="IMC Diesel — topo">
         <span class="logo__mark">IMC</span>
         <span class="logo__text">
           <span class="logo__line">DIESEL</span>
@@ -1398,13 +1491,14 @@ a:hover {
         <a href="https://wa.me/5594992549638" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="social-link">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         </a>
-        <a href="#" aria-label="LinkedIn" class="social-link">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=engizaquelcastro@gmail.com&amp;su=Contato%20-%20IMC%20Diesel" target="_blank" rel="noopener noreferrer" aria-label="Enviar e-mail para engizaquelcastro@gmail.com" class="social-link" title="engizaquelcastro@gmail.com">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
         </a>
         <a href="https://www.instagram.com/imcdiesel_engenharia?igsh=MW40cHlhZnRqMjE2cg==" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-link">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
         </a>
       </div>
+      <p class="footer__email"><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=engizaquelcastro@gmail.com&amp;su=Contato%20-%20IMC%20Diesel" target="_blank" rel="noopener noreferrer">engizaquelcastro@gmail.com</a></p>
       <p class="footer__crea">CREA 1023865262-D/GO</p>
       <p class="footer__copy">© IMC Diesel Engenharia de Frotas — Todos os direitos reservados.</p>
     </div>
@@ -1417,54 +1511,54 @@ a:hover {
   <svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true">
     <symbol id="i-engine" viewBox="0 0 64 64">
       <rect x="8" y="20" width="48" height="28" rx="4" fill="none" stroke="#bcd4ee" stroke-width="2"/>
-      <path d="M20 20V14h8v6M36 20V12h8v8M16 36h8M40 36h8" fill="none" stroke="#e8c04a" stroke-width="2"/>
+      <path d="M20 20V14h8v6M36 20V12h8v8M16 36h8M40 36h8" fill="none" stroke="#5eb0e8" stroke-width="2"/>
       <circle cx="32" cy="34" r="6" fill="none" stroke="#7eb0d6" stroke-width="2"/>
     </symbol>
     <symbol id="i-chip" viewBox="0 0 64 64">
       <rect x="18" y="18" width="28" height="28" rx="4" fill="none" stroke="#bcd4ee" stroke-width="2"/>
       <path d="M18 26H10M18 38H10M54 26h-8M54 38h-8M26 18V10M38 18V10M26 54v-8M38 54v-8" stroke="#7eb0d6" stroke-width="2"/>
-      <rect x="26" y="26" width="12" height="12" rx="2" fill="none" stroke="#e8c04a" stroke-width="1.5"/>
+      <rect x="26" y="26" width="12" height="12" rx="2" fill="none" stroke="#5eb0e8" stroke-width="1.5"/>
     </symbol>
     <symbol id="i-diag" viewBox="0 0 64 64">
       <rect x="10" y="40" width="8" height="14" rx="1" fill="none" stroke="#7eb0d6" stroke-width="2"/>
       <rect x="26" y="28" width="8" height="26" rx="1" fill="none" stroke="#bcd4ee" stroke-width="2"/>
-      <rect x="42" y="18" width="8" height="36" rx="1" fill="none" stroke="#e8c04a" stroke-width="2"/>
-      <path d="M14 34l10-10 8 8 12-14" fill="none" stroke="#f0daa0" stroke-width="2"/>
+      <rect x="42" y="18" width="8" height="36" rx="1" fill="none" stroke="#5eb0e8" stroke-width="2"/>
+      <path d="M14 34l10-10 8 8 12-14" fill="none" stroke="#8ec8ef" stroke-width="2"/>
     </symbol>
     <symbol id="i-doc" viewBox="0 0 64 64">
       <path d="M18 10h20l14 14v30a4 4 0 01-4 4H18a4 4 0 01-4-4V14a4 4 0 014-4z" fill="none" stroke="#bcd4ee" stroke-width="2"/>
-      <path d="M38 10v14h14" fill="none" stroke="#e8c04a" stroke-width="2"/>
+      <path d="M38 10v14h14" fill="none" stroke="#5eb0e8" stroke-width="2"/>
       <path d="M22 38h20M22 46h14" stroke="#7eb0d6" stroke-width="2"/>
     </symbol>
     <symbol id="i-gear" viewBox="0 0 64 64">
-      <path d="M32 14l2.5 7h11l6-7-4 11 9 9-11-4L32 43l-2.5-7h-11l-6 7 4-11-9-9 11 4L32 14z" fill="none" stroke="#e8c04a" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M32 14l2.5 7h11l6-7-4 11 9 9-11-4L32 43l-2.5-7h-11l-6 7 4-11-9-9 11 4L32 14z" fill="none" stroke="#5eb0e8" stroke-width="2" stroke-linejoin="round"/>
       <circle cx="32" cy="28" r="6" fill="none" stroke="#bcd4ee" stroke-width="2"/>
     </symbol>
     <symbol id="i-tool" viewBox="0 0 64 64">
-      <path d="M42 22l14-14 4 4-14 14" fill="none" stroke="#e8c04a" stroke-width="2"/>
+      <path d="M42 22l14-14 4 4-14 14" fill="none" stroke="#5eb0e8" stroke-width="2"/>
       <path d="M18 42c-8-8-8-21 0-29l29 29c-8 8-21 8-29 0z" fill="none" stroke="#bcd4ee" stroke-width="2"/>
       <path d="M24 48l12-12" stroke="#7eb0d6" stroke-width="2"/>
     </symbol>
     <symbol id="i-truck" viewBox="0 0 64 64">
       <path d="M6 38V18h26v26H6zm32 8V26h14l10 12v10H48" fill="none" stroke="#bcd4ee" stroke-width="2"/>
-      <circle cx="16" cy="40" r="5" fill="none" stroke="#e8c04a" stroke-width="2"/>
+      <circle cx="16" cy="40" r="5" fill="none" stroke="#5eb0e8" stroke-width="2"/>
       <circle cx="44" cy="40" r="5" fill="none" stroke="#7eb0d6" stroke-width="2"/>
     </symbol>
     <symbol id="i-machine" viewBox="0 0 64 64">
       <path d="M10 44V24h16l4-8h20v28H10z" fill="none" stroke="#bcd4ee" stroke-width="2"/>
-      <circle cx="20" cy="44" r="5" fill="none" stroke="#e8c04a" stroke-width="2"/>
+      <circle cx="20" cy="44" r="5" fill="none" stroke="#5eb0e8" stroke-width="2"/>
       <circle cx="44" cy="44" r="5" fill="none" stroke="#7eb0d6" stroke-width="2"/>
-      <path d="M34 16v12" stroke="#f0daa0" stroke-width="2"/>
+      <path d="M34 16v12" stroke="#8ec8ef" stroke-width="2"/>
     </symbol>
     <symbol id="i-fleet" viewBox="0 0 64 64">
       <path d="M4 38V22h14v16H4zm18 6V18h14v26H22zm18-6V26h14v12H40" fill="none" stroke="#bcd4ee" stroke-width="2"/>
-      <circle cx="11" cy="40" r="3" fill="none" stroke="#e8c04a" stroke-width="2"/>
+      <circle cx="11" cy="40" r="3" fill="none" stroke="#5eb0e8" stroke-width="2"/>
       <circle cx="29" cy="40" r="3" fill="none" stroke="#7eb0d6" stroke-width="2"/>
-      <circle cx="47" cy="40" r="3" fill="none" stroke="#e8c04a" stroke-width="2"/>
+      <circle cx="47" cy="40" r="3" fill="none" stroke="#5eb0e8" stroke-width="2"/>
     </symbol>
     <symbol id="i-consult" viewBox="0 0 64 64">
       <circle cx="26" cy="22" r="10" fill="none" stroke="#bcd4ee" stroke-width="2"/>
-      <path d="M34 30l12 12" stroke="#e8c04a" stroke-width="2"/>
+      <path d="M34 30l12 12" stroke="#5eb0e8" stroke-width="2"/>
       <path d="M14 44h28" stroke="#7eb0d6" stroke-width="2"/>
     </symbol>
   </svg>
