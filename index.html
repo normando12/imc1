@@ -364,6 +364,24 @@ a:hover {
   transform: scale(1);
 }
 
+.hero__bg-slide--tint-blue {
+  filter: brightness(0.72) saturate(0.85) sepia(0.15);
+}
+
+.hero__bg-slide--tint-blue::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    rgba(8, 28, 52, 0.55) 0%,
+    rgba(18, 55, 95, 0.42) 50%,
+    rgba(6, 22, 45, 0.62) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
 .hero__overlay {
   position: absolute;
   inset: 0;
@@ -372,6 +390,13 @@ a:hover {
     linear-gradient(120deg, rgba(5, 5, 6, 0.92) 0%, rgba(15, 40, 64, 0.55) 45%, rgba(5, 5, 6, 0.88) 100%),
     radial-gradient(ellipse 100% 80% at 50% 100%, rgba(61, 142, 212, 0.12), transparent 55%);
   pointer-events: none;
+  transition: background 1.4s var(--ease-out);
+}
+
+.hero--overlay-blue .hero__overlay {
+  background:
+    linear-gradient(120deg, rgba(5, 12, 22, 0.88) 0%, rgba(20, 55, 95, 0.62) 45%, rgba(5, 10, 20, 0.9) 100%),
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(61, 142, 212, 0.22), transparent 55%);
 }
 
 .hero__glow {
@@ -1227,6 +1252,10 @@ a:hover {
     transition: none;
   }
 
+  .hero__bg-slide--tint-blue::after {
+    mix-blend-mode: normal;
+  }
+
   .hero__glow,
   .hero__scroll span {
     animation: none;
@@ -1297,10 +1326,11 @@ a:hover {
   <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero__bg">
-        <div class="hero__bg-slide hero__bg-slide--active" style="--img: url('https://images.unsplash.com/photo-1519003722824-cd8d066dafc1?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero__bg-slide" style="--img: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero__bg-slide" style="--img: url('https://images.unsplash.com/photo-1504325336164-de4b7058fce3?auto=format&fit=crop&w=1920&q=80');"></div>
-        <div class="hero__bg-slide" style="--img: url('https://images.unsplash.com/photo-1486262715619-67b85e4b76d8?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="hero__bg-slide hero__bg-slide--active" data-duration="15000" style="--img: url('images/hero-bg.jpg');"></div>
+        <div class="hero__bg-slide hero__bg-slide--tint-blue" data-duration="4000" data-overlay-blue style="--img: url('images/hero-bg.jpg');"></div>
+        <div class="hero__bg-slide" data-duration="6000" style="--img: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="hero__bg-slide" data-duration="6000" style="--img: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1920&q=80');"></div>
+        <div class="hero__bg-slide" data-duration="6000" style="--img: url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1920&q=80');"></div>
       </div>
       <div class="hero__overlay"></div>
       <div class="hero__glow hero__glow--1" aria-hidden="true"></div>
@@ -1570,8 +1600,10 @@ a:hover {
   var header = document.querySelector(".header");
   var nav = document.querySelector(".nav");
   var navToggle = document.querySelector(".nav-toggle");
+  var hero = document.querySelector(".hero");
   var heroSlides = document.querySelectorAll(".hero__bg-slide");
   var slideIndex = 0;
+  var heroTimer;
   var form = document.getElementById("form-contato");
   var formMsg = document.getElementById("form-msg");
 
@@ -1600,16 +1632,37 @@ a:hover {
     });
   }
 
-  /* Hero carousel */
-  function nextSlide() {
-    if (!heroSlides.length) return;
-    heroSlides[slideIndex].classList.remove("hero__bg-slide--active");
-    slideIndex = (slideIndex + 1) % heroSlides.length;
-    heroSlides[slideIndex].classList.add("hero__bg-slide--active");
+  /* Hero carousel — duração por slide (mesa 15s, azul 4s, demais 6s) */
+  function getSlideDuration(index) {
+    var slide = heroSlides[index];
+    if (!slide) return 6000;
+    var ms = parseInt(slide.getAttribute("data-duration"), 10);
+    return ms > 0 ? ms : 6000;
   }
 
-  if (heroSlides.length > 1) {
-    setInterval(nextSlide, 6000);
+  function updateHeroOverlay() {
+    if (!hero || !heroSlides.length) return;
+    var active = heroSlides[slideIndex];
+    hero.classList.toggle(
+      "hero--overlay-blue",
+      active && active.hasAttribute("data-overlay-blue")
+    );
+  }
+
+  function goToHeroSlide(index) {
+    if (!heroSlides.length) return;
+    heroSlides[slideIndex].classList.remove("hero__bg-slide--active");
+    slideIndex = ((index % heroSlides.length) + heroSlides.length) % heroSlides.length;
+    heroSlides[slideIndex].classList.add("hero__bg-slide--active");
+    updateHeroOverlay();
+    clearTimeout(heroTimer);
+    heroTimer = setTimeout(function () {
+      goToHeroSlide(slideIndex + 1);
+    }, getSlideDuration(slideIndex));
+  }
+
+  if (heroSlides.length) {
+    goToHeroSlide(0);
   }
 
   /* Scroll reveal */

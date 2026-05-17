@@ -327,14 +327,39 @@ a:hover {
   transform: scale(1);
 }
 
+.hero__bg-slide--tint-blue {
+  filter: brightness(0.72) saturate(0.85) sepia(0.15);
+}
+
+.hero__bg-slide--tint-blue::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    165deg,
+    rgba(8, 28, 52, 0.55) 0%,
+    rgba(18, 55, 95, 0.42) 50%,
+    rgba(6, 22, 45, 0.62) 100%
+  );
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
 .hero__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   background:
     linear-gradient(120deg, rgba(5, 5, 6, 0.92) 0%, rgba(15, 40, 64, 0.55) 45%, rgba(5, 5, 6, 0.88) 100%),
-    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(232, 185, 35, 0.12), transparent 55%);
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(61, 142, 212, 0.12), transparent 55%);
   pointer-events: none;
+  transition: background 1.4s var(--ease-out);
+}
+
+.hero--overlay-blue .hero__overlay {
+  background:
+    linear-gradient(120deg, rgba(5, 12, 22, 0.88) 0%, rgba(20, 55, 95, 0.62) 45%, rgba(5, 10, 20, 0.9) 100%),
+    radial-gradient(ellipse 100% 80% at 50% 100%, rgba(61, 142, 212, 0.22), transparent 55%);
 }
 
 .hero__glow {
@@ -1120,6 +1145,10 @@ a:hover {
 
   .hero__bg-slide {
     transition: none;
+  }
+
+  .hero__bg-slide--tint-blue::after {
+    mix-blend-mode: normal;
   }
 
   .hero__glow,
